@@ -1,3 +1,7 @@
+"""
+Serializers for HydroponicSystem and Measurement model
+"""
+
 from core.models import HydroponicSystem
 from rest_framework import serializers
 from core.models import Measurement
@@ -17,5 +21,13 @@ class HydroponicSystemSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = HydroponicSystem
-        fields = '__all__'
-        read_only_fields = ['id', 'user']
+        fields = ['id', 'title', 'user', 'location', 'created', 'updated']
+        read_only_fields = ['id', 'user', 'created', 'updated']
+
+
+class HydroponicSystemDetailSerializer(HydroponicSystemSerializer):
+    """Serializer for the Hydroponic System detail view"""
+    measurements = MeasurementSerializer(many=True, read_only=True)
+
+    class Meta(HydroponicSystemSerializer.Meta):
+        fields = HydroponicSystemSerializer.Meta.fields + ['measurements']
