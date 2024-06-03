@@ -20,7 +20,7 @@ from rest_framework.filters import OrderingFilter
 
 class HydroponicSystemViewSet(viewsets.ModelViewSet):
     """ViewSet for the HydroponicSystem Model"""
-    queryset = HydroponicSystem.objects.all()
+    queryset = HydroponicSystem.objects.all().select_related('user')
     authentication_classes = [authentication.TokenAuthentication]
     permission_classes = [permissions.IsAuthenticated]
     filter_backends = [DjangoFilterBackend, OrderingFilter]
@@ -51,7 +51,7 @@ class HydroponicSystemViewSet(viewsets.ModelViewSet):
 
 class MeasurementViewSet(viewsets.ModelViewSet):
     """ViewSet for the Measurement Model"""
-    queryset = Measurement.objects.all()
+    queryset = Measurement.objects.all().select_related('hydroponic_system', 'hydroponic_system__user')
     serializer_class = MeasurementSerializer
     authentication_classes = [authentication.TokenAuthentication]
     permission_classes = [permissions.IsAuthenticated]
