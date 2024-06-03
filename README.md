@@ -60,7 +60,7 @@ Incorporates user authorization and authentication.
 
 ## After creating user create token to authorize user, go to address:
 
-    127.0.0.1:8000//user/token
+    127.0.0.1:8000/user/token
 
 # Endpoints Hydroponic System API:
 
