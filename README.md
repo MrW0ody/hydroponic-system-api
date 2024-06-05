@@ -46,7 +46,7 @@ Incorporates user authorization and authentication.
 
     docker-compose up -d
     docker-compose exec app python manage.py migrate
-    docker-compose exec app makemigrations
+    docker-compose exec app python manage.py makemigrations
     docker-compose exec app python manage.py migrate
 
 ## To run tests:
