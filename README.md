@@ -25,30 +25,33 @@ users should have the option to fetch details of a specific system with informat
 
 Incorporates user authorization and authentication.
 
+# Please note that the program does not use .env files because there was a problem with building the image on Docker
+
 # Installation
 
-## Make directory for project and enter cd to this directory after clone project cd to project and create .env file example .env file:
-        DB_HOST=db
-        DB_PORT=5432
-        DB_NAME=devname
-        DB_USER=devusername
-        DB_PASS=devpassword123
+## Make directory for project and cd to this directory after clone project:
+    
+    git init
+    
+    after this
 
-## After creation directory and .env file build image:
+    git clone https://github.com/MrW0ody/hydroponic-system-api.git
+
+## After creating the directory and cloning the project build image:
 
     docker-compose build
 
 
 ## After this create migrations to database:
 
-    dokcer-compose up -d
-    docker-compose app python manage.py migrate
-    docker-compose app makemigrations
-    docker-compose app python manage.py migrate
+    docker-compose up -d
+    docker-compose exec app python manage.py migrate
+    docker-compose exec app makemigrations
+    docker-compose exec app python manage.py migrate
 
 ## To run tests:
 
-    docker-compose app python manage.py test
+    docker-compose exec app python manage.py test
 
 ## Go to address url:
 

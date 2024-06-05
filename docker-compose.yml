@@ -1,24 +1,31 @@
-version: "3.9"
+version: '3.9'
 
 services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=hydroponic_db
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+
   app:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
-    ports:
-      - "8000:8000"
     volumes:
       - .:/app
-    env_file:
-      - .env
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_NAME=hydroponic_db
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin123
     depends_on:
       - db
 
-  db:
-    image: postgres:16.3-alpine3.20
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    env_file:
-      - .env
-
-volumes:
-  postgres_data:
+volumes: # Volume definition outside the services section
+  postgres_data:  # Volume name
