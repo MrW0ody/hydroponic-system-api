@@ -41,7 +41,7 @@ Incorporates user authorization and authentication.
 
 ## After this create migrations to database:
 
-    dokcer-compose up -d
+    docker-compose up -d
     docker-compose app python manage.py migrate
     docker-compose app makemigrations
     docker-compose app python manage.py migrate
