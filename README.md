@@ -3,7 +3,7 @@
 This project aims to develop a simple CRUD application using Django, facilitating the management of hydroponic systems.
 Below are the functional requirements and technical specifications:
 
-##Functional Requirements:
+## Functional Requirements:
 
 ### Hydroponic System Management Endpoint:
 
@@ -64,7 +64,7 @@ Incorporates user authorization and authentication.
 ## After creating user create token to authorize user, go to address:
 
     127.0.0.1:8000/user/token
-    copy your token and go to click authorization button and in token authentication enter
+    copy your token and go to click authorize button and in token authentication enter
     Token <your copied token>
 
 # Endpoints Hydroponic System API:
